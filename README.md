@@ -1,1 +1,3 @@
-# it my web site
+# under construction
+## for now you might prefer to see my profile
+### https://github.com/sefradama
