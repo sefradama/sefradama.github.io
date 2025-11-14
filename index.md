@@ -22,7 +22,7 @@ title: sefra
 <div class="carousel-container">
     <div class="carousel-track">
         <div class="project-card">
-            <img src="rakun.jpg" alt="rakun" class="project-screenshot">
+            <img src="rakun.png" alt="rakun" class="project-screenshot">
             <div class="project-overlay">
                 <h3 class="project-title">rakun</h3>
                 <p class="project-description">my flagship creation, rakun, is a discord chatbot with advanced memory features and an adorably shitty attitude. open source release: TBA</p>
