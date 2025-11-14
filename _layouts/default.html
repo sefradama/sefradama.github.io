@@ -6,6 +6,61 @@
     <title>{{ site.title }} - {{ page.title }}</title>
     <meta name="description" content="{{ site.description }}">
     <style>
+        :root {
+            /* Light theme (default) */
+            --bg-color: #fff;
+            --text-color: #333;
+            --text-secondary: #555;
+            --accent-color: #2c3e50;
+            --card-bg: #f8f9fa;
+            --card-hover-bg: #f0f0f0;
+            --border-color: #e0e0e0;
+            --overlay-bg: rgba(0,0,0,0.8);
+            --nav-bg: rgba(255,255,255,0.9);
+            --nav-hover-bg: white;
+            --dot-color: rgba(255,255,255,0.5);
+            --dot-active: white;
+            --shadow-color: rgba(0,0,0,0.1);
+            --kofi-bg: #ff5f5f;
+            --kofi-hover: #ff4040;
+        }
+        
+        [data-theme="light"] {
+            --bg-color: #fff;
+            --text-color: #333;
+            --text-secondary: #555;
+            --accent-color: #2c3e50;
+            --card-bg: #f8f9fa;
+            --card-hover-bg: #f0f0f0;
+            --border-color: #e0e0e0;
+            --overlay-bg: rgba(0,0,0,0.8);
+            --nav-bg: rgba(255,255,255,0.9);
+            --nav-hover-bg: white;
+            --dot-color: rgba(255,255,255,0.5);
+            --dot-active: white;
+            --shadow-color: rgba(0,0,0,0.1);
+            --kofi-bg: #ff5f5f;
+            --kofi-hover: #ff4040;
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent-color: #64b5f6;
+            --card-bg: #2d2d2d;
+            --card-hover-bg: #3d3d3d;
+            --border-color: #404040;
+            --overlay-bg: rgba(0,0,0,0.9);
+            --nav-bg: rgba(45,45,45,0.9);
+            --nav-hover-bg: #3d3d3d;
+            --dot-color: rgba(255,255,255,0.4);
+            --dot-active: #64b5f6;
+            --shadow-color: rgba(0,0,0,0.3);
+            --kofi-bg: #ff6b6b;
+            --kofi-hover: #ff5252;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -15,11 +70,12 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-color);
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
-            background-color: #fff;
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         .hero-section {
@@ -38,7 +94,7 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background-color: #f0f0f0;
+            background-color: var(--card-hover-bg);
             margin-bottom: 20px;
             object-fit: cover;
         }
@@ -46,7 +102,7 @@
         .name {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #2c3e50;
+            color: var(--accent-color);
             margin-bottom: 10px;
         }
         
@@ -56,14 +112,14 @@
         
         .bio {
             font-size: 1.1rem;
-            color: #555;
+            color: var(--text-secondary);
             margin-bottom: 30px;
             line-height: 1.7;
         }
         
         .kofi-button {
             display: inline-block;
-            background-color: #ff5f5f;
+            background-color: var(--kofi-bg);
             color: white;
             padding: 12px 24px;
             border-radius: 8px;
@@ -73,7 +129,7 @@
         }
         
         .kofi-button:hover {
-            background-color: #ff4040;
+            background-color: var(--kofi-hover);
             transform: translateY(-2px);
         }
         
@@ -83,7 +139,7 @@
             height: 400px;
             overflow: hidden;
             border-radius: 12px;
-            background-color: #f8f9fa;
+            background-color: var(--card-bg);
         }
         
         .carousel-track {
@@ -108,7 +164,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            background-color: #e0e0e0;
+            background-color: var(--border-color);
         }
         
         .project-overlay {
@@ -116,7 +172,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, var(--overlay-bg), transparent);
             color: white;
             padding: 30px 20px 20px;
         }
@@ -137,7 +193,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
+            background: var(--nav-bg);
             border: none;
             width: 40px;
             height: 40px;
@@ -146,11 +202,12 @@
             font-size: 18px;
             transition: all 0.3s ease;
             z-index: 10;
+            color: var(--text-color);
         }
         
         .carousel-nav:hover {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--nav-hover-bg);
+            box-shadow: 0 2px 10px var(--shadow-color);
         }
         
         .carousel-prev {
@@ -175,14 +232,48 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.5);
+            background: var(--dot-color);
             cursor: pointer;
             transition: all 0.3s ease;
         }
         
         .dot.active {
-            background: white;
+            background: var(--dot-active);
             transform: scale(1.2);
+        }
+        
+        /* Theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--nav-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            color: var(--text-color);
+        }
+        
+        .theme-toggle:hover {
+            background: var(--nav-hover-bg);
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+        
+        .theme-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .theme-toggle:hover .theme-icon {
+            transform: rotate(20deg);
         }
         
         @media (max-width: 768px) {
@@ -221,12 +312,43 @@
     </style>
 </head>
 <body>
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon" id="theme-icon">🌙</span>
+    </button>
+    
     <main>
         {{ content }}
     </main>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const html = document.documentElement;
+            
+            // Check for saved theme preference or default to dark
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+            
+            function updateThemeIcon(theme) {
+                themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+            }
+            
+            function toggleTheme() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            }
+            
+            themeToggle.addEventListener('click', toggleTheme);
+            
+            // Carousel functionality
             const track = document.querySelector('.carousel-track');
             const cards = document.querySelectorAll('.project-card');
             const prevBtn = document.querySelector('.carousel-prev');
